@@ -1,0 +1,3 @@
+include 'client', 'server'
+rootProject.name = 'grails3-react-diceware'
+
