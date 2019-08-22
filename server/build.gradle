@@ -58,6 +58,9 @@ dependencies {
     testCompile "org.grails:grails-web-testing-support"
 
     compile "org.grails.plugins:gorm-graphql:1.0.2"
+    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.2'
+    compile 'com.github.jsimone:webapp-runner:8.5.43.1'
+    provided "org.springframework.boot:spring-boot-starter-tomcat"
 }
 
 bootRun {
@@ -66,3 +69,29 @@ bootRun {
     String springProfilesActive = 'spring.profiles.active'
     systemProperty springProfilesActive, System.getProperty(springProfilesActive)
 }
+
+task stage() {
+    dependsOn clean, war
+}
+war.mustRunAfter clean
+
+task copyToLib(type: Copy) {
+    into "$buildDir/server"
+    from(configurations.compile) {
+        include "webapp-runner*"
+    }
+}
+
+war.dependsOn(':client:buildClient');
+war {
+    baseName = 'diceware'    // otherwise this is 'server'
+    version = project.version // + '.' + System.currentTimeMillis();   // I simply prefer to append a ms timestamp in case I've run multiple builds
+
+    // Finally, include the files from the client:
+    from('../client/dist') {
+        include '**/*'
+        //into('WEB-INF')
+    }
+}
+
+stage.dependsOn(copyToLib)

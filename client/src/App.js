@@ -57,7 +57,8 @@ class App extends Component {
               </div>
             <br/>
             <div id="controllers" role="navigation">
-              <h2>Available Controllers:</h2>
+                {process.env.REACT_APP_SERVER_URL}
+              <h2>Available Controllers (env: {process.env.NODE_ENV}):</h2>
               <ul>
                 {serverInfo.controllers ? serverInfo.controllers.map(controller => {
                   return <li key={controller.name}><a
