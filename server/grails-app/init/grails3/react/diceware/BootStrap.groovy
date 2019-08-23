@@ -12,9 +12,11 @@ class BootStrap {
         //log.error servletContext.getResourcePaths("/")
 
         // A line looks like: 11214	abyss
-        servletContext.getResourceAsStream('diceware.wordlist.asc.txt').text.eachLine { line ->
-            List fields = line.tokenize()
-            new Word(rollKey: fields[0], theWord: fields[1]).save()
+        if (Word.count == 0) { // populate DB once only kludge
+            servletContext.getResourceAsStream('diceware.wordlist.asc.txt').text.eachLine { line ->
+                List fields = line.tokenize()
+                new Word(rollKey: fields[0], theWord: fields[1]).save()
+            }
         }
     }
     def destroy = {
