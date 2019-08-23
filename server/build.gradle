@@ -21,8 +21,8 @@ buildscript {
 version "0.1"
 group "grails3.react.diceware"
 
-apply plugin: "spring-boot"
-apply plugin: "asset-pipeline"
+/*apply plugin: "spring-boot"
+apply plugin: "asset-pipeline"*/
 apply plugin:"eclipse"
 apply plugin:"idea"
 apply plugin:"war"

@@ -3,7 +3,7 @@ plugins {
 }
 
 node {
-    version = '8.7.0'
+    version = '10.15.0'
     yarnVersion = '1.3.2'
     download = true
 }
@@ -43,3 +43,9 @@ task buildClient(type: YarnTask, dependsOn: 'yarn') {
     args = ['run', 'build']
 }
 
+/*
+task bundle(type: NpmTask, dependsOn: npmInstall) {
+    args = ['run', 'build']
+}
+
+assemble.dependsOn(bundle)*/
