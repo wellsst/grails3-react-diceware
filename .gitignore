@@ -51,3 +51,12 @@ gradle-app.setting
 
 /grails3-react-diceware.iml
 /client/.gradle/
+
+build
+.gradle
+.idea
+out
+*.iml
+*.ipr
+*.iws
+.DS_Store
