@@ -7,26 +7,26 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
-        //classpath "com.moowork.gradle:gradle-node-plugin:0.13"
+        classpath "com.moowork.gradle:gradle-node-plugin:0.13"
         classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
         classpath "org.grails.plugins:views-gradle:1.2.9"
-        //classpath 'com.bertramlabs.plugins:asset-pipeline-gradle:2.1.1'
+        classpath 'com.bertramlabs.plugins:asset-pipeline-gradle:2.1.1'
     }
 }
 plugins {
     id "io.spring.dependency-management" version "0.4.0.RELEASE"
 }
 
-version "0.1"
+version "1"
 group "grails3.react.diceware"
 
-/*apply plugin: "spring-boot"
-apply plugin: "asset-pipeline"*/
+apply plugin: "spring-boot"
+apply plugin: "asset-pipeline"
 apply plugin:"eclipse"
 apply plugin:"idea"
 apply plugin:"war"
 apply plugin:"org.grails.grails-web"
-//apply plugin:"com.moowork.node"
+apply plugin:"com.moowork.node"
 apply plugin:"org.grails.plugins.views-json"
 
 repositories {
@@ -70,7 +70,7 @@ dependencies {
     // For deployment
     /*compile 'org.eclipse.jetty:jetty-runner:9.2.11.v20150529'*/
     compile 'com.github.jsimone:webapp-runner:8.5.11.3'
-    //provided "org.springframework.boot:spring-boot-starter-tomcat"
+    provided "org.springframework.boot:spring-boot-starter-tomcat"
     //compile "org.grails:grails-dependencies"
 
 }
@@ -82,7 +82,9 @@ bootRun {
     systemProperty springProfilesActive, System.getProperty(springProfilesActive)
 }
 
-task stage() // dependsOn: ['build', 'clean'])
+task stage() {
+    dependsOn clean, war
+}
 // build.mustRunAfter clean
 war.mustRunAfter clean
 
@@ -92,7 +94,7 @@ task copyToLib(type: Copy) {
         include "webapp-runner*"
     }
 }
-// stage.dependsOn(copyToLib)
+stage.dependsOn(copyToLib)
 
 war.dependsOn(':client:buildClient')
 war {
@@ -113,4 +115,9 @@ tasks.stage.doLast() {
     delete fileTree(dir: "build/assetCompile")
     delete fileTree(dir: "build/distributions")
     delete fileTree(dir: "build/libs", exclude: "*.war")
+}
+
+subprojects {
+    // ...
+    apply from: file("$rootProject.projectDir/gradle/heroku/stage.gradle")
 }

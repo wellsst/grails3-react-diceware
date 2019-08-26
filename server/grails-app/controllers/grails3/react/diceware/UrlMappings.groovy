@@ -1,7 +1,13 @@
 package grails3.react.diceware
 
 class UrlMappings {
-
+    static excludes = [
+            '/css/*',
+            '/fonts/*',
+            '/static/*',
+            '/asset-manifest.json',
+            '/favicon.ico'
+    ]
     static mappings = {
         delete "/$controller/$id(.$format)?"(action:"delete")
         get "/$controller(.$format)?"(action:"index")
