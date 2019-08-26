@@ -84,6 +84,7 @@ bootRun {
 }
 
 task stage(dependsOn: ['build', 'clean'])
+// build.mustRunAfter clean
 war.mustRunAfter clean
 
 task copyToLib(type: Copy) {
@@ -94,7 +95,7 @@ task copyToLib(type: Copy) {
 }
 stage.dependsOn(copyToLib)
 
-war.dependsOn(':client:buildClient');
+war.dependsOn(':client:buildClient')
 war {
     baseName = 'diceware'    // otherwise this is 'server'
     version = project.version // + '.' + System.currentTimeMillis();   // I simply prefer to append a ms timestamp in case I've run multiple builds
