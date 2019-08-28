@@ -117,7 +117,3 @@ tasks.stage.doLast() {
     delete fileTree(dir: "build/libs", exclude: "*.war")
 }
 
-subprojects {
-    // ...
-    apply from: file("$rootProject.projectDir/gradle/heroku/stage.gradle")
-}
