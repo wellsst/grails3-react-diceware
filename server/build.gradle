@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.moowork.gradle:gradle-node-plugin:0.13"
-        classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
+        classpath "org.grails.plugins:hibernate5:${gormVersion - ".RELEASE"}"
         classpath "org.grails.plugins:views-gradle:1.2.9"
         classpath 'com.bertramlabs.plugins:asset-pipeline-gradle:2.1.1'
     }
@@ -22,12 +22,12 @@ group "grails3.react.diceware"
 
 apply plugin: "spring-boot"
 apply plugin: "asset-pipeline"
-apply plugin:"eclipse"
-apply plugin:"idea"
-apply plugin:"war"
-apply plugin:"org.grails.grails-web"
-apply plugin:"com.moowork.node"
-apply plugin:"org.grails.plugins.views-json"
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: "war"
+apply plugin: "org.grails.grails-web"
+apply plugin: "com.moowork.node"
+apply plugin: "org.grails.plugins.views-json"
 
 repositories {
     mavenLocal()
@@ -99,7 +99,8 @@ stage.dependsOn(copyToLib)
 war.dependsOn(':client:buildClient')
 war {
     baseName = 'diceware'    // otherwise this is 'server'
-    version = project.version // + '.' + System.currentTimeMillis();   // I simply prefer to append a ms timestamp in case I've run multiple builds
+    version = project.version
+    // + '.' + System.currentTimeMillis();   // I simply prefer to append a ms timestamp in case I've run multiple builds
 
     // Finally, include the files from the client:
     from('../client/build') {
