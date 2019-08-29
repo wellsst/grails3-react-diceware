@@ -1,1 +1,1 @@
-web: cd server/build ; java -Dgrails.env=test -jar libs/diceware-0.1/WEB-INF/lib/webapp-runner-*.jar --expand-war --port 7000 libs/*.war
+web: cd server/build ; java -Dgrails.env=prod -jar libs/diceware-1/WEB-INF/lib/webapp-runner-*.jar --expand-war --port 7000 libs/*.war
