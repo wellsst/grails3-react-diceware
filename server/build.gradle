@@ -64,7 +64,8 @@ dependencies {
     testCompile "org.grails:grails-datastore-rest-client"
     testCompile "org.grails:grails-web-testing-support"
 
-    compile "org.grails.plugins:gorm-graphql:1.0.2"
+    //compile "org.grails.plugins:gorm-graphql:1.0.2"
+    compile "org.grails.plugins:gorm-graphql:1.0.3.BUILD-SNAPSHOT"
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.2'
 
     // For deployment
