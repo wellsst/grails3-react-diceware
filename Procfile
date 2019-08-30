@@ -1,2 +1,2 @@
-web: cd server/build ; java -Dgrails.env=prod -jar ../build/server/jetty-runner*.jar --expand-war --port $PORT libs/*.war
+web: cd server/build ; java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dgrails.env=prod -jar ../build/server/jetty-runner-*.jar --port $PORT libs/*.war
 

@@ -93,6 +93,7 @@ task copyToLib(type: Copy) {
     into "$buildDir/server"
     from(configurations.compile) {
         include "webapp-runner*"
+        include "jetty-runner*"
     }
 }
 stage.dependsOn(copyToLib)
