@@ -70,7 +70,7 @@ dependencies {
 
     // For deployment
     /*compile 'org.eclipse.jetty:jetty-runner:9.2.11.v20150529'*/
-    compile 'com.github.jsimone:webapp-runner:9.0.24.1'
+    compile 'com.github.jsimone:webapp-runner:8.0.52.0'
     provided "org.springframework.boot:spring-boot-starter-tomcat"
     //compile "org.grails:grails-dependencies"
 
