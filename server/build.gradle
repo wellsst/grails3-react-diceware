@@ -21,6 +21,7 @@ version "1"
 group "grails3.react.diceware"
 
 apply plugin: "spring-boot"
+// apply plugin: "org.springframework.boot"
 apply plugin: "asset-pipeline"
 apply plugin: "eclipse"
 apply plugin: "idea"
