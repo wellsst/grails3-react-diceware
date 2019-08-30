@@ -69,8 +69,8 @@ dependencies {
     compile group: 'org.postgresql', name: 'postgresql', version: '42.2.2'
 
     // For deployment
-    compile 'org.eclipse.jetty:jetty-runner:9.2.11.v20150529'
-    // compile 'com.github.jsimone:webapp-runner:8.5.11.3'
+    /*compile 'org.eclipse.jetty:jetty-runner:9.2.11.v20150529'*/
+    compile 'com.github.jsimone:webapp-runner:8.5.11.3'
     provided "org.springframework.boot:spring-boot-starter-tomcat"
     //compile "org.grails:grails-dependencies"
 
@@ -93,7 +93,6 @@ task copyToLib(type: Copy) {
     into "$buildDir/server"
     from(configurations.compile) {
         include "webapp-runner*"
-        include "jetty-runner*"
     }
 }
 stage.dependsOn(copyToLib)
