@@ -75,6 +75,8 @@ dependencies {
     provided "org.springframework.boot:spring-boot-starter-tomcat"
     //compile "org.grails:grails-dependencies"
 
+    compile 'org.grails.plugins:grails-melody-plugin:1.76.1'
+
 }
 
 bootRun {
