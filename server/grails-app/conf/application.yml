@@ -28,6 +28,10 @@ endpoints:
     jmx:
         enabled: true
 
+management:
+    endpoints:
+        enabled-by-default: true
+
 ---
 grails:
     mime:
