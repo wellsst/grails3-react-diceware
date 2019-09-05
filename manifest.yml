@@ -1,0 +1,12 @@
+---
+applications:
+- name: diceware
+  memory: 768M
+  instances: 1
+  random-route: true
+  path: server/build/libs/diceware-1.war
+  buildpacks:
+  - https://github.com/cloudfoundry/java-buildpack.git
+  services:
+  - postgresql
+  health-check-type: process
